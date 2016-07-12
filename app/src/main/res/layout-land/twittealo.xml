@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/pbl"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imv_twittealo"/>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/btEtiquetar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="#B7B7B7"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Etiquetar Personas" />
+
+
+        <Button
+            android:id="@+id/btTwittealo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#FFFFFF"
+            android:background="#00ACEE"
+            android:textAllCaps="false"
+            android:text="\u00A1Twitt\u00e9alo\u0021" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btTweet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Enviando tweet..."
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:background="#A000"
+        android:textAllCaps="false"
+        android:visibility="gone"/>
+</RelativeLayout>

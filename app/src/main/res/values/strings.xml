@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Photo Mirror</string>
+    <string name="ingreso">Ingresar</string>
+    <string name="camera_button">Capturar</string>
+    <string name="hola">Hola, </string>
+    <string name="error_campo_requirido">Este campo es requerido</string>
+
+
+    <!-- Twitter Configurations -->
+    <string name="twitter_callback">http://www.simaski.com.ve</string>
+    <string name="twitter_consumer_key">ztcRoBF0XYzdZnqZhavXfNbsz</string>
+    <string name="twitter_consumer_secret">FtOw0oL0UoET3EfxOIjoOPMlWaRTCTXIdOxpKUqae9HXZObz2y</string>
+    <string name="twitter_oauth_verifier">oauth_verifier</string>
+    <!-- End Configurations -->
+
+
+
+    <string name="intro">Enter your Twitter search term</string>
+    <string name="hint">Search Term</string>
+    <string name="search_label">Search</string>
+    <string name="placeholder">---</string>
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/splash" >
+
+
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Login"
+        android:visibility="gone"
+        android:textColor="@color/blanco"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/multiple_actions_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_addButtonColorNormal="@color/blanco"
+        fab:fab_colorPressed="@color/colorPrimary"
+        fab:fab_addButtonPlusIconColor="@color/colorPrimary"
+        fab:fab_expandDirection="up"
+        fab:fab_labelStyle="@style/Etiquetas"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtTwitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_twitter_white_24dp"
+            fab:fab_colorNormal="#00ACED"
+            fab:fab_colorPressed="@color/colorPrimary"
+            fab:fab_title="Conecta a Twitter"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbtConfigura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_settings_white_24dp"
+            fab:fab_colorNormal="#00ACED"
+            fab:fab_colorPressed="@color/colorPrimary"
+            fab:fab_title="Configura Publicacion"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ftbIngresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_icon="@drawable/ic_thumb_up_white_24dp"
+            fab:fab_colorNormal="#00ACED"
+            fab:fab_colorPressed="@color/colorPrimary"
+            fab:fab_title="Ingresa"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</RelativeLayout>

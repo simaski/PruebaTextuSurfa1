@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/pbl"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:id="@+id/ln1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/btCancelar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="#B7B7B7"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Cancelar" />
+
+        <Button
+            android:id="@+id/btAceptar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#FFFFFF"
+            android:background="#00ACEE"
+            android:textAllCaps="false"
+            android:text="Aceptar" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ln1">
+
+        <TextView
+            android:id="@+id/intro_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textStyle="italic"
+            android:text="@string/intro"
+            />
+
+        <EditText
+            android:id="@+id/search_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/hint"
+            android:layout_below="@+id/intro_txt"
+            android:padding="10dp"
+            android:background="#ffff66"
+            android:layout_margin="5dp"
+            />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/search_label"
+            android:layout_below="@+id/search_edit"
+            android:onClick="searchTwitter"
+            android:layout_margin="5dp"
+            />
+
+        <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/search_btn">
+
+            <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/listaUsuarios"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imv_encanta" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="4">
+
+        <Button
+            android:id="@+id/btIntenta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="#B7B7B7"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:text="Intenta de nuevo" />
+
+        <Button
+            android:id="@+id/btEncanta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:padding="20dp"
+            android:textSize="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="#FFFFFF"
+            android:background="#00ACEE"
+            android:textAllCaps="false"
+            android:text="\u00A1Me encanta\u0021" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
