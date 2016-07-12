@@ -138,7 +138,7 @@ public class Etiquetar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(getApplicationContext(), "Proximamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Proximament", Toast.LENGTH_SHORT).show();
 
             }
         });
