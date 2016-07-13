@@ -57,7 +57,7 @@
             />
 
         <EditText
-            android:id="@+id/search_edit"
+            android:id="@+id/edtSearch"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -69,12 +69,12 @@
             />
 
         <Button
-            android:id="@+id/search_btn"
+            android:id="@+id/btnSearch"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/search_label"
-            android:layout_below="@+id/search_edit"
+            android:layout_below="@+id/edtSearch"
             android:onClick="searchTwitter"
             android:layout_margin="5dp"
             />
@@ -82,11 +82,11 @@
         <ScrollView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/search_btn">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btnSearch">
 
             <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/listaUsuarios"
+                android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="vertical" />
