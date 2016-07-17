@@ -13,7 +13,7 @@
             android:id="@+id/etComentario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLength="140"
+            android:maxLength="116"
             android:hint="Comentario y Hashtag a Utilizar"/>
 
     </android.support.design.widget.TextInputLayout>
@@ -31,6 +31,22 @@
             android:inputType="number"
             android:maxLength="2"
             android:hint="Tiempo de Espera para Tomar la Foto: Maximo 10seg"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til3"
+        android:layout_below="@+id/til2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="140"
+            android:visibility="gone"
+            android:hint="Texto para Marca de Agua Imagen"/>
 
     </android.support.design.widget.TextInputLayout>
 

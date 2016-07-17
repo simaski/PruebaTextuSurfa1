@@ -41,9 +41,11 @@ public class TweetAdapter extends BaseAdapter {
 		}
 
 		Tweet tweet = tweetList.get(position);
+		TextView txtTweetName = (TextView) convertView.findViewById(R.id.txtTweetName);
 		TextView txtTweet = (TextView) convertView.findViewById(R.id.txtTweet);
 		TextView txtTweetBy = (TextView) convertView.findViewById(R.id.txtTweetBy);
 
+		txtTweetName.setText(tweet.getTweetName());
 		txtTweet.setText(tweet.getTweet());
 		txtTweetBy.setText(tweet.getTweetBy());
 

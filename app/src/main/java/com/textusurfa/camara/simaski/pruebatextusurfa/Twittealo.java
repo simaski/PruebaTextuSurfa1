@@ -88,6 +88,8 @@ public class Twittealo extends AppCompatActivity {
         keySecret = b.getString("keySecret");
         photoFile = b.getString("photofile");
 
+        Toast.makeText(getApplication(), "--> "+Status, Toast.LENGTH_SHORT).show();
+
         bb = new Bundle();
         bb.putString("tiempo", Tiempo);
         bb.putString("datos", Status);

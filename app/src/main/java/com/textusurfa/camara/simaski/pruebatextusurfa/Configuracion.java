@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -20,8 +21,10 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
  */
 public class Configuracion extends Activity {
 
-    public EditText etDatos;
+    //public EditText etDatos;
+    public TextInputLayout etDatos;
     public EditText etTiempo;
+    public EditText etMarca;
     public FloatingActionButton btGuardar;
     public int bandera= 0;
 
@@ -31,7 +34,9 @@ public class Configuracion extends Activity {
 
         setContentView(R.layout.configuracion_layout);
 
-        etDatos = (EditText) findViewById(R.id.etComentario);
+        etDatos = (TextInputLayout) findViewById(R.id.til1);
+        etDatos.setCounterEnabled(true);
+        etDatos.setCounterMaxLength(116);
         etTiempo = (EditText) findViewById(R.id.etTiempo);
         btGuardar = (FloatingActionButton) findViewById(R.id.btGuardar);
         btGuardar.setOnClickListener(new View.OnClickListener() {
@@ -39,19 +44,20 @@ public class Configuracion extends Activity {
             public void onClick(View v) {
                 attemptLogin();
 
-                if (etDatos.getText().length() != 0 && etTiempo.getText().length() != 0) {
+                if (etDatos.getEditText().getText().length() != 0 && etTiempo.getText().length() != 0) {
 
                     bandera  = Integer.parseInt(etTiempo.getText().toString());
                     if(bandera > 0 && bandera <= 10) {
 
 
                         Bundle b = new Bundle();
-                        b.putString("datos", etDatos.getText().toString());
+                        b.putString("datos", etDatos.getEditText().getText().toString());
                         b.putString("tiempo", etTiempo.getText().toString());
-                        Intent i = new Intent(Configuracion.this, Main.class);
-                        i.putExtras(b);
-                        startActivity(i);
-                        Configuracion.this.finish();
+                                                    Intent i = new Intent(Configuracion.this, Main.class);
+                            i.putExtras(b);
+                            startActivity(i);
+                            Configuracion.this.finish();
+
                     }else{
                         Toast.makeText(getApplicationContext(), "El tiempo debe ser mayor a 0 y menor o igual a 10", Toast.LENGTH_SHORT).show();
                     }
@@ -68,7 +74,7 @@ public class Configuracion extends Activity {
         etTiempo.setError(null);
 
         // Store values at the time of the login attempt.
-        String usuario = etDatos.getText().toString();
+        String usuario = etDatos.getEditText().getText().toString();
         String password = etTiempo.getText().toString();
 
         boolean cancel = false;

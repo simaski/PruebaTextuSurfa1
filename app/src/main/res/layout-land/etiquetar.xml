@@ -53,20 +53,23 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textStyle="italic"
-            android:text="@string/intro"
+            android:text="Usuarios Etiquetados Aqui!"
             />
 
-        <EditText
-            android:id="@+id/edtSearch"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/hint"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til2"
             android:layout_below="@+id/intro_txt"
-            android:padding="10dp"
-            android:background="#ffff66"
-            android:layout_margin="5dp"
-            />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/hint"/>
+
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/btnSearch"
@@ -74,24 +77,49 @@
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="@string/search_label"
-            android:layout_below="@+id/edtSearch"
+            android:layout_below="@+id/til2"
             android:onClick="searchTwitter"
             android:layout_margin="5dp"
             />
 
-        <ScrollView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
+
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/btnSearch">
+            android:scrollbars="vertical"
+            android:layout_below="@+id/btnSearch" />
 
-            <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seguidores"
+            android:id="@+id/tvSeguidores"
+            android:layout_marginLeft="59dp"
+            android:layout_marginStart="59dp"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#00ACEE"
+            android:layout_alignTop="@+id/btnSearch"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="searchSeguidores"/>
 
-        </ScrollView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Siguiendo"
+            android:id="@+id/tvSiguiendo"
+            android:paddingTop="10dp"
+            android:textSize="20sp"
+            android:textColor="#00ACEE"
+            android:onClick="searchSiguiendo"
+            android:layout_alignTop="@+id/btnSearch"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginEnd="80dp" />
 
     </RelativeLayout>
 

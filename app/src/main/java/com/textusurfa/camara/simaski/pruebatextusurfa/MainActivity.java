@@ -53,6 +53,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
 
     private String Tiempo;
     private String Datos;
+    private String Marca;
     private String keyToken;
     private String keySecret;
     private String photofile;
@@ -82,6 +83,13 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
         Datos = b.getString("datos");
         keyToken = b.getString("keyToken");
         keySecret = b.getString("keySecret");
+            bb = new Bundle();
+            bb.putString("tiempo", Tiempo);
+            bb.putString("datos", Datos);
+            bb.putString("keytoken", keyToken);
+            bb.putString("keysecret", keySecret);
+
+
 
 
         btCapturar = (ImageButton) findViewById(R.id.btCapturar);
@@ -90,11 +98,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
         TiempoFinal = (Integer.parseInt(Tiempo) * 1000) + 1000;
         Toast.makeText(getApplicationContext(), "AQUI"+TiempoFinal, Toast.LENGTH_SHORT).show();
 
-        bb = new Bundle();
-        bb.putString("tiempo", Tiempo);
-        bb.putString("datos", Datos);
-        bb.putString("keytoken", keyToken);
-        bb.putString("keysecret", keySecret);
+
 
 
         mPreview = (SurfaceView) findViewById(R.id.preview);
@@ -159,7 +163,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
             e.printStackTrace();
         }
         mCamera.setParameters(params);
-       // mCamera.setDisplayOrientation(0);
+        // mCamera.setDisplayOrientation(0);
         mCamera.startPreview();
     }
 
@@ -282,7 +286,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
         Camera.Parameters params = mCamera.getParameters();
         //params.setRotation(rotate);
         mCamera.setParameters(params);
-       // mCamera.setDisplayOrientation(90);
+        // mCamera.setDisplayOrientation(90);
         mCamera.startPreview();
     }
 

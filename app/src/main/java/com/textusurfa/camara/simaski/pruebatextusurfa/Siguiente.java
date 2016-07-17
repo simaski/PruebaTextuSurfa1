@@ -45,6 +45,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
 
     private String Tiempo;
     private String Status;
+    private String Marca;
     public String keyToken;
     public String keySecret;
     public String photoFile;
@@ -76,17 +77,23 @@ public class Siguiente extends Activity implements View.OnClickListener {
         keySecret = b.getString("keySecret");
         photoFile = b.getString("photofile");
 
-        bb = new Bundle();
+        /*bb = new Bundle();
         bb.putString("tiempo", Tiempo);
         bb.putString("datos", Status);
         bb.putString("keytoken", keyToken);
         bb.putString("keysecret", keySecret);
-        bb.putString("photofile", photoFile);
+        bb.putString("photofile", photoFile);*/
+            bb = new Bundle();
+            bb.putString("tiempo", Tiempo);
+            bb.putString("datos", Status);
+            bb.putString("keytoken", keyToken);
+            bb.putString("keysecret", keySecret);
+            bb.putString("photofile", photoFile);
+
 
         //get drawing view
         drawView = (DrawingView) findViewById(R.id.drawing);
-        bMap = BitmapFactory.decodeFile(
-                Environment.getExternalStorageDirectory()+"/myphotos12/"+photoFile);
+        //bMap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/myphotos12/"+photoFile);
         //Añadimos el bitmap al imageView para
         //mostrarlo por pantalla
         //imv_twittealo.setImageBitmap(bMap);

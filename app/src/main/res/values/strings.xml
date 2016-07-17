@@ -3,6 +3,7 @@
     <string name="ingreso">Ingresar</string>
     <string name="camera_button">Capturar</string>
     <string name="hola">Hola, </string>
+    <string name="buscando">Buscando </string>
     <string name="error_campo_requirido">Este campo es requerido</string>
 
 
@@ -13,11 +14,18 @@
     <string name="twitter_oauth_verifier">oauth_verifier</string>
     <!-- End Configurations -->
 
+    <!-- Twitter Configurations -->
+    <string name="twitter_callback2">	http://example.com/auth/twitter/callback/</string>
+    <string name="twitter_consumer_key2">mz0uiIKjPYMc1KdHTD4XOfq6m</string>
+    <string name="twitter_consumer_secret2">WLgL8ceCWAZsZL3vrHbFk1Yk9R1pGPCTC8h1aCnegJux9JpnUm</string>
+    <string name="twitter_oauth_verifier2">oauth_verifier</string>
+    <!-- End Configurations -->
+
 
 
     <string name="intro">Enter your Twitter search term</string>
-    <string name="hint">Search Term</string>
-    <string name="search_label">Search</string>
+    <string name="hint">Ingrese Nombre/Usuario a Buscar</string>
+    <string name="search_label">Buscar</string>
     <string name="placeholder">---</string>
 
 </resources>

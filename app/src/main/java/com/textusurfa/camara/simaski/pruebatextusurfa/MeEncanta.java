@@ -25,6 +25,7 @@ public class MeEncanta extends AppCompatActivity {
 
     private String Tiempo;
     private String Status;
+    private String Marca;
     public String keyToken;
     public String keySecret;
     public String photoFile;
@@ -49,12 +50,21 @@ public class MeEncanta extends AppCompatActivity {
         keySecret = b.getString("keySecret");
         photoFile = b.getString("photofile");
 
-        bb = new Bundle();
+        /*bb = new Bundle();
         bb.putString("tiempo", Tiempo);
         bb.putString("datos", Status);
         bb.putString("keytoken", keyToken);
         bb.putString("keysecret", keySecret);
-        bb.putString("photofile", photoFile);
+        bb.putString("photofile", photoFile);*/
+            bb = new Bundle();
+            bb.putString("tiempo", Tiempo);
+            bb.putString("datos", Status);
+            bb.putString("keytoken", keyToken);
+            bb.putString("keysecret", keySecret);
+            bb.putString("photofile", photoFile);
+
+
+
 
         //Toast.makeText(getApplicationContext(), "Proximamentettttt"+Tiempo, Toast.LENGTH_SHORT).show();
 
@@ -97,6 +107,10 @@ public class MeEncanta extends AppCompatActivity {
 
 
     }
+
+
+
+
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {

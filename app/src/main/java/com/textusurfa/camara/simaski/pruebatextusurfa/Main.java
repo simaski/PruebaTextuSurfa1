@@ -62,6 +62,7 @@ public class Main extends Activity {
 
     private String Tiempo;
     private String Datos;
+    private String Marca;
     private int bandera = 0;
 
 
@@ -128,123 +129,114 @@ public class Main extends Activity {
         //if(date.compareTo(fecha) == 0 || date.compareTo(fecha1) == 0 || date.compareTo(fecha2) == 0) {
 
 
-            userName = (TextView) findViewById(R.id.user_name);
+        userName = (TextView) findViewById(R.id.user_name);
 
         /* Check if required twitter keys are set */
-            if (TextUtils.isEmpty(consumerKey) || TextUtils.isEmpty(consumerSecret)) {
-                Toast.makeText(this, "Twitter key and secret not configured", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        if (TextUtils.isEmpty(consumerKey) || TextUtils.isEmpty(consumerSecret)) {
+            Toast.makeText(this, "Twitter key and secret not configured", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         /* Initialize application preferences */
-            mSharedPreferences = getSharedPreferences(PREF_NAME, 0);
+        mSharedPreferences = getSharedPreferences(PREF_NAME, 0);
 
-            boolean isLoggedIn = mSharedPreferences.getBoolean(PREF_KEY_TWITTER_LOGIN, false);
+        boolean isLoggedIn = mSharedPreferences.getBoolean(PREF_KEY_TWITTER_LOGIN, false);
 
         /*  if already logged in, then hide login layout and show share layout */
-            if (isLoggedIn) {
-                //loginLayout.setVisibility(View.VISIBLE);
-                bandera = 1;
-                userName.setVisibility(View.VISIBLE);
+        if (isLoggedIn) {
+            //loginLayout.setVisibility(View.VISIBLE);
+            bandera = 1;
+            userName.setVisibility(View.VISIBLE);
 
-                String username = mSharedPreferences.getString(PREF_USER_NAME, "");
-                userName.setText(getResources().getString(R.string.hola) + username);
+            String username = mSharedPreferences.getString(PREF_USER_NAME, "");
+            userName.setText(getResources().getString(R.string.hola) + username);
 
-            } else {
-                //loginLayout.setVisibility(View.GONE);
-                //shareLayout.setVisibility(View.GONE);
+        } else {
+            //loginLayout.setVisibility(View.GONE);
+            //shareLayout.setVisibility(View.GONE);
 
-                Uri uri = getIntent().getData();
+            Uri uri = getIntent().getData();
 
-                if (uri != null && uri.toString().startsWith(callbackUrl)) {
+            if (uri != null && uri.toString().startsWith(callbackUrl)) {
 
-                    String verifier = uri.getQueryParameter(oAuthVerifier);
+                String verifier = uri.getQueryParameter(oAuthVerifier);
 
-                    try {
+                try {
 
 					/* Getting oAuth authentication token */
-                        AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+                    AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
 
 					/* Getting user id form access token */
-                        long userID = accessToken.getUserId();
-                        final User user = twitter.showUser(userID);
-                        final String username = user.getName();
+                    long userID = accessToken.getUserId();
+                    final User user = twitter.showUser(userID);
+                    final String username = user.getName();
+
 
 					/* save updated token */
-                        saveTwitterInfo(accessToken);
+                    saveTwitterInfo(accessToken);
 
-                        //loginLayout.setVisibility(View.GONE);
-                        //shareLayout.setVisibility(View.VISIBLE);
-                        userName.setText(getString(R.string.hola) + username);
-                        Toast.makeText(this, "Aqui Estoy 22222", Toast.LENGTH_SHORT).show();
+                    //loginLayout.setVisibility(View.GONE);
+                    //shareLayout.setVisibility(View.VISIBLE);
+                    userName.setText(getString(R.string.hola) + username);
+                    Toast.makeText(this, "Aqui Estoy 22222", Toast.LENGTH_SHORT).show();
 
-                    } catch (Exception e) {
-                        Log.e("Failed to login Twitter!!", e.getMessage());
-                    }
+                } catch (Exception e) {
+                    Log.e("Failed to login Twitter!!", e.getMessage());
                 }
             }
+        }
 
-            ftbTwitter = (FloatingActionButton) findViewById(R.id.fbtTwitter);
-            ftbTwitter.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Toast.makeText(getApplicationContext(),"Hola",Toast.LENGTH_SHORT).show();
-                    loginToTwitter();
-                }
-            });
+        ftbTwitter = (FloatingActionButton) findViewById(R.id.fbtTwitter);
+        ftbTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getApplicationContext(),"Hola",Toast.LENGTH_SHORT).show();
+                loginToTwitter();
+            }
+        });
 
-            ftbConfigura = (FloatingActionButton) findViewById(R.id.fbtConfigura);
-            ftbConfigura.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Toast.makeText(getApplicationContext(),"Hola "+prueba,Toast.LENGTH_SHORT).show();
-                    Intent miIntent = new Intent(Main.this, Configuracion.class);
-                    Main.this.startActivity(miIntent);
-                    Main.this.finish();
-
-
-                }
-            });
-
-            ftbIngresa = (FloatingActionButton) findViewById(R.id.ftbIngresa);
-            ftbIngresa.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    i = getIntent();
-                    b = i.getExtras();
-
-                    if (bandera == 0 || b == null) {
-                        // Toast.makeText(getApplication(), "Algunos datos son necesarios", Toast.LENGTH_SHORT).show();
-                        Dialogo();
-                    } else {
-
-                        Datos = b.getString("datos");
-                        Tiempo = b.getString("tiempo");
+        ftbConfigura = (FloatingActionButton) findViewById(R.id.fbtConfigura);
+        ftbConfigura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getApplicationContext(),"Hola "+prueba,Toast.LENGTH_SHORT).show();
+                Intent miIntent = new Intent(Main.this, Configuracion.class);
+                Main.this.startActivity(miIntent);
+                Main.this.finish();
 
 
+            }
+        });
+
+        ftbIngresa = (FloatingActionButton) findViewById(R.id.ftbIngresa);
+        ftbIngresa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                i = getIntent();
+                b = i.getExtras();
+
+                if (bandera == 0 || b == null) {
+                    // Toast.makeText(getApplication(), "Algunos datos son necesarios", Toast.LENGTH_SHORT).show();
+                    Dialogo();
+                } else {
+
+                    Datos = b.getString("datos");
+                    Tiempo = b.getString("tiempo");
                         bb = new Bundle();
                         bb.putString("datos", Datos);
                         bb.putString("tiempo", Tiempo);
                         bb.putString("keytoken", keyToken);
                         bb.putString("keysecret", keySecret);
 
-
-
-
-                   /*if (Datos.trim().length() > 0) {
-                        new updateTwitterStatus().execute(Datos);
-                    } else {
-                        Toast.makeText(getApplication(), "Message is empty!!", Toast.LENGTH_SHORT).show();
-                    }*/
-
                         Intent miIntent = new Intent(Main.this, MainActivity.class);
                         miIntent.putExtras(bb);
                         Main.this.startActivity(miIntent);
                         Main.this.finish();
-                    }
+
                 }
-            });
+            }
+        });
         /*} else {
             DialogoPeriodo();
             ftbMenu.setVisibility(View.GONE);
