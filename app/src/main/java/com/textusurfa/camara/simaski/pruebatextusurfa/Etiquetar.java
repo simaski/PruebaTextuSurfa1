@@ -86,6 +86,7 @@ public class Etiquetar extends AppCompatActivity {
 
     private String Tiempo;
     private String Status;
+    private String Marca;
 
     private Intent i;
     private Bundle b;
@@ -129,6 +130,7 @@ public class Etiquetar extends AppCompatActivity {
 
         Tiempo = b.getString("tiempo");
         Status = b.getString("datos");
+        Marca = b.getString("marca");
         keyToken = b.getString("keyToken");
         keySecret = b.getString("keySecret");
         photoFile = b.getString("photofile");
@@ -136,6 +138,7 @@ public class Etiquetar extends AppCompatActivity {
         bb = new Bundle();
         bb.putString("tiempo", Tiempo);
         bb.putString("datos", Status);
+        bb.putString("marca", Marca);
         bb.putString("photofile", photoFile);
 
 

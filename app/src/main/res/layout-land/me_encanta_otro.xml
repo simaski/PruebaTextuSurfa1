@@ -1,0 +1,81 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl1"
+    android:background="#FF89FF"
+    android:orientation="vertical">
+
+    <!-- Custom View -->
+    <com.textusurfa.camara.simaski.pruebatextusurfa.DrawingView
+        android:id="@+id/drawing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FFFFFFFF" />
+
+    <!-- Color Palette -->
+
+    <RelativeLayout
+        android:id="@+id/rl2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- Top Buttons -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btIntenta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:padding="20dp"
+                android:textSize="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:background="#B7B7B7"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:text="Intenta de nuevo" />
+
+            <Button
+                android:id="@+id/btEncanta"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:padding="20dp"
+                android:textSize="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="#FFFFFF"
+                android:background="#00ACEE"
+                android:textAllCaps="false"
+                android:text="\u00A1Me encanta\u0021" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#etiqueta"
+        android:id="@+id/tvEtiqueta"
+        android:textAllCaps="true"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#939393"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp" />
+
+
+</RelativeLayout>

@@ -33,7 +33,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/myTema"/>
         <activity
-            android:name=".MeEncanta"
+            android:name=".MeEncantaOtro"
             android:screenOrientation="landscape"
             android:theme="@style/myTema"></activity>
         <activity

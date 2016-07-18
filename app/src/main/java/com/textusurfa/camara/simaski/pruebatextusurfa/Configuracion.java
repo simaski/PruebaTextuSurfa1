@@ -38,13 +38,14 @@ public class Configuracion extends Activity {
         etDatos.setCounterEnabled(true);
         etDatos.setCounterMaxLength(116);
         etTiempo = (EditText) findViewById(R.id.etTiempo);
+        etMarca = (EditText) findViewById(R.id.etMarca);
         btGuardar = (FloatingActionButton) findViewById(R.id.btGuardar);
         btGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 attemptLogin();
 
-                if (etDatos.getEditText().getText().length() != 0 && etTiempo.getText().length() != 0) {
+                if (etDatos.getEditText().getText().length() != 0 && etTiempo.getText().length() != 0 && etMarca.getText().length() != 0) {
 
                     bandera  = Integer.parseInt(etTiempo.getText().toString());
                     if(bandera > 0 && bandera <= 10) {
@@ -53,10 +54,11 @@ public class Configuracion extends Activity {
                         Bundle b = new Bundle();
                         b.putString("datos", etDatos.getEditText().getText().toString());
                         b.putString("tiempo", etTiempo.getText().toString());
-                                                    Intent i = new Intent(Configuracion.this, Main.class);
-                            i.putExtras(b);
-                            startActivity(i);
-                            Configuracion.this.finish();
+                        b.putString("marca", etMarca.getText().toString());
+                        Intent i = new Intent(Configuracion.this, Main.class);
+                        i.putExtras(b);
+                        startActivity(i);
+                        Configuracion.this.finish();
 
                     }else{
                         Toast.makeText(getApplicationContext(), "El tiempo debe ser mayor a 0 y menor o igual a 10", Toast.LENGTH_SHORT).show();
@@ -72,10 +74,12 @@ public class Configuracion extends Activity {
         // Reset errors.
         etDatos.setError(null);
         etTiempo.setError(null);
+        etMarca.setError(null);
 
         // Store values at the time of the login attempt.
         String usuario = etDatos.getEditText().getText().toString();
         String password = etTiempo.getText().toString();
+        String marca = etMarca.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -88,6 +92,10 @@ public class Configuracion extends Activity {
         } else if (TextUtils.isEmpty(password)) {
             etTiempo.setError(getString(R.string.error_campo_requirido));
             focusView = etTiempo;
+            cancel = true;
+        } else if (TextUtils.isEmpty(marca)) {
+            etMarca.setError(getString(R.string.error_campo_requirido));
+            focusView = etMarca;
             cancel = true;
         }
 

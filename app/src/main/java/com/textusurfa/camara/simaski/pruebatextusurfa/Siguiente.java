@@ -41,6 +41,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
     //sizes
     private float smallBrush, mediumBrush, largeBrush;
 
+    private Button btVolver;
     private Button btSiguiente;
 
     private String Tiempo;
@@ -73,6 +74,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
 
         Tiempo = b.getString("tiempo");
         Status = b.getString("datos");
+        Marca = b.getString("marca");
         keyToken = b.getString("keyToken");
         keySecret = b.getString("keySecret");
         photoFile = b.getString("photofile");
@@ -86,6 +88,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
             bb = new Bundle();
             bb.putString("tiempo", Tiempo);
             bb.putString("datos", Status);
+            bb.putString("marca", Marca);
             bb.putString("keytoken", keyToken);
             bb.putString("keysecret", keySecret);
             bb.putString("photofile", photoFile);
@@ -99,7 +102,11 @@ public class Siguiente extends Activity implements View.OnClickListener {
         //imv_twittealo.setImageBitmap(bMap);
         //drawView.setBackground();
         //pathName = "/drawable/img1"
-        drawView.setBackground(Drawable.createFromPath(Environment.getExternalStorageDirectory()+"/myphotos12/"+photoFile));
+        //drawView.setBackground(Drawable.createFromPath(Environment.getExternalStorageDirectory()+"/myphotos12/"+photoFile));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            drawView.setBackground(Drawable.createFromPath(Environment.getExternalStorageDirectory()+"/myphotos12/"+photoFile));
+        }
 
         //get the palette and first color button
 
@@ -120,6 +127,10 @@ public class Siguiente extends Activity implements View.OnClickListener {
         //erase button
         eraseBtn = (ImageButton) findViewById(R.id.erase_btn);
         eraseBtn.setOnClickListener(this);
+
+        btVolver = (Button) findViewById(R.id.btVolver);
+        btVolver.setOnClickListener(this);
+
 
         btSiguiente = (Button) findViewById(R.id.btSiguiente);
         btSiguiente.setOnClickListener(this);
@@ -294,7 +305,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
             File file = new File(path);
             FileOutputStream ostream;
 
-            Toast.makeText(getApplicationContext(), "ied"+path, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "ied"+path, Toast.LENGTH_SHORT).show();
 
             try {
                 file.createNewFile();
@@ -332,7 +343,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
         }
 
         if (view.getId() == R.id.btVolver) {
-            Intent miIntent = new Intent(Siguiente.this, MeEncanta.class);
+            Intent miIntent = new Intent(Siguiente.this, MainActivity.class);
             miIntent.putExtras(bb);
             Siguiente.this.startActivity(miIntent);
             Siguiente.this.finish();

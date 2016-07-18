@@ -81,11 +81,13 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
 
         Tiempo = b.getString("tiempo");
         Datos = b.getString("datos");
+        Marca = b.getString("marca");
         keyToken = b.getString("keyToken");
         keySecret = b.getString("keySecret");
             bb = new Bundle();
             bb.putString("tiempo", Tiempo);
             bb.putString("datos", Datos);
+            bb.putString("marca", Marca);
             bb.putString("keytoken", keyToken);
             bb.putString("keysecret", keySecret);
 
@@ -96,9 +98,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
 
 
         TiempoFinal = (Integer.parseInt(Tiempo) * 1000) + 1000;
-        Toast.makeText(getApplicationContext(), "AQUI"+TiempoFinal, Toast.LENGTH_SHORT).show();
-
-
+        //Toast.makeText(getApplicationContext(), "AQUI"+TiempoFinal, Toast.LENGTH_SHORT).show();
 
 
         mPreview = (SurfaceView) findViewById(R.id.preview);
@@ -216,7 +216,7 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
             Uri selectedImage = Uri.parse(imageFilePath);
             File file = new File(imageFilePath);
             String path = file.getAbsolutePath();
-            Toast.makeText(getApplicationContext(), "Ruta "+path,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Ruta "+path,Toast.LENGTH_SHORT).show();
             Bitmap bitmap = null;
 
             outStream = new FileOutputStream(file);
@@ -232,22 +232,12 @@ public class MainActivity extends Activity implements SurfaceHolder.Callback, Ca
                 }
             }
             if (bitmap != null) {
-                Toast.makeText(MainActivity.this,"Imagen Capturada", Toast.LENGTH_LONG)
-                        .show();
+                //Toast.makeText(MainActivity.this,"Imagen Capturada", Toast.LENGTH_LONG).show();
                 bb.putString("photofile", photofile);
-                Intent miIntent = new Intent(MainActivity.this,MeEncanta.class);
+                Intent miIntent = new Intent(MainActivity.this,MeEncantaOtro.class);
                 miIntent.putExtras(bb);
                 MainActivity.this.startActivity(miIntent);
                 MainActivity.this.finish();
-                //imv_prueba.setImageBitmap(bitmap);
-                //imv_prueba.setRotation(0);
-                        /*Bundle b = new Bundle();
-                        Intent i = new Intent(getApplicationContext(),OtraActivity.class);
-                        ByteArrayOutputStream bs = new ByteArrayOutputStream();
-                        bitmap.compress(Bitmap.CompressFormat.JPEG,0,bs);
-                        b.putByteArray("img",bs.toByteArray());
-                        i.putExtras(b);
-                        startActivity(i);*/
             } else {
                 Toast.makeText(MainActivity.this,"Fallo al capturar la imagen", Toast.LENGTH_LONG).show();
             }

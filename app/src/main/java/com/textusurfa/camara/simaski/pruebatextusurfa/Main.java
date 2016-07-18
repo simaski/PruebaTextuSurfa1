@@ -116,14 +116,9 @@ public class Main extends Activity {
 
         setContentView(R.layout.main);
 
-
-        //Date today = Calendar.getInstance().getTime();
-        //SimpleDateFormat formatter = new SimpleDateFormat("yyyymmdd");
-        //date = formatter.format(today);
         ftbMenu = (FloatingActionsMenu) findViewById(R.id.multiple_actions_down);
 
         date = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        //Toast.makeText(getApplicationContext(), "hh "+date, Toast.LENGTH_SHORT).show();
 
 
         //if(date.compareTo(fecha) == 0 || date.compareTo(fecha1) == 0 || date.compareTo(fecha2) == 0) {
@@ -152,8 +147,6 @@ public class Main extends Activity {
             userName.setText(getResources().getString(R.string.hola) + username);
 
         } else {
-            //loginLayout.setVisibility(View.GONE);
-            //shareLayout.setVisibility(View.GONE);
 
             Uri uri = getIntent().getData();
 
@@ -175,10 +168,7 @@ public class Main extends Activity {
 					/* save updated token */
                     saveTwitterInfo(accessToken);
 
-                    //loginLayout.setVisibility(View.GONE);
-                    //shareLayout.setVisibility(View.VISIBLE);
                     userName.setText(getString(R.string.hola) + username);
-                    Toast.makeText(this, "Aqui Estoy 22222", Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
                     Log.e("Failed to login Twitter!!", e.getMessage());
@@ -190,7 +180,7 @@ public class Main extends Activity {
         ftbTwitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(),"Hola",Toast.LENGTH_SHORT).show();
+
                 loginToTwitter();
             }
         });
@@ -199,7 +189,7 @@ public class Main extends Activity {
         ftbConfigura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(),"Hola "+prueba,Toast.LENGTH_SHORT).show();
+
                 Intent miIntent = new Intent(Main.this, Configuracion.class);
                 Main.this.startActivity(miIntent);
                 Main.this.finish();
@@ -217,15 +207,16 @@ public class Main extends Activity {
                 b = i.getExtras();
 
                 if (bandera == 0 || b == null) {
-                    // Toast.makeText(getApplication(), "Algunos datos son necesarios", Toast.LENGTH_SHORT).show();
                     Dialogo();
                 } else {
 
                     Datos = b.getString("datos");
                     Tiempo = b.getString("tiempo");
+                    Marca = b.getString("marca");
                         bb = new Bundle();
                         bb.putString("datos", Datos);
                         bb.putString("tiempo", Tiempo);
+                        bb.putString("marca", Marca);
                         bb.putString("keytoken", keyToken);
                         bb.putString("keysecret", keySecret);
 
@@ -237,10 +228,6 @@ public class Main extends Activity {
                 }
             }
         });
-        /*} else {
-            DialogoPeriodo();
-            ftbMenu.setVisibility(View.GONE);
-        }*/
 
     }
 
@@ -252,7 +239,6 @@ public class Main extends Activity {
         builder.setMessage("Hola error al conectar con Twitter o no haz configurado correctamente " +
                 "el tiempo y comentario de la aplicaci\u00f3n");
         builder.setPositiveButton("OK", null);
-        builder.setNegativeButton("Cancelar", null);
         builder.show();
     }
     ////////////////////////////////FIN DIALOG /////////////////////////////////////////
@@ -325,16 +311,14 @@ public class Main extends Activity {
                 final Intent intent = new Intent(this, WebViewActivity.class);
                 intent.putExtra(WebViewActivity.EXTRA_URL, requestToken.getAuthenticationURL());
                 startActivityForResult(intent, WEBVIEW_REQUEST_CODE);
-                Toast.makeText(this, "Aqui Estoy 4444",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Aqui Estoy 4444",Toast.LENGTH_SHORT).show();
 
             } catch (TwitterException e) {
                 e.printStackTrace();
             }
         } else {
 
-            //loginLayout.setVisibility(View.VISIBLE);
             Toast.makeText(this, "Disculpe! Ya esta conectado a Twitter!",Toast.LENGTH_SHORT).show();
-            //shareLayout.setVisibility(View.VISIBLE);
 
         }
     }
@@ -354,9 +338,7 @@ public class Main extends Activity {
                 saveTwitterInfo(accessToken);
 
                 userName.setVisibility(View.VISIBLE);
-                //shareLayout.setVisibility(View.VISIBLE);
                 userName.setText(Main.this.getResources().getString(R.string.hola) + username);
-                Toast.makeText(this, "Aqui Estoy 5555",Toast.LENGTH_SHORT).show();
 
             } catch (Exception e) {
                 Log.e("Twitter Login Failed", e.getMessage());
@@ -396,8 +378,6 @@ public class Main extends Activity {
 
                 // Update status
                 StatusUpdate statusUpdate = new StatusUpdate(status);
-                //InputStream is = getResources().openRawResource(R.drawable.splash);
-                //statusUpdate.setMedia("test.jpg", is);
 
                 twitter4j.Status response = twitter.updateStatus(statusUpdate);
 
@@ -412,13 +392,7 @@ public class Main extends Activity {
         @Override
         protected void onPostExecute(Void result) {
 
-			/* Dismiss the progress dialog after sharing */
-            //supDialog.dismiss();
-
             Toast.makeText(Main.this, "Publicado en Twitter!", Toast.LENGTH_SHORT).show();
-
-            // Clearing EditText field
-            //mShareEditText.setText("");
         }
 
     }

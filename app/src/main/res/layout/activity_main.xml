@@ -13,14 +13,14 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:gravity="center_vertical"
-        android:background="#82000000">
+        android:background="#57000000">
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btCapturar"
             android:src="@drawable/capturar"
-            android:background="#A000"
+            android:background="#57000000"
             android:contentDescription="camera"
             android:visibility="visible"
             android:onClick="onSnapClick"

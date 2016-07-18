@@ -45,7 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="140"
-            android:visibility="gone"
             android:hint="Texto para Marca de Agua Imagen"/>
 
     </android.support.design.widget.TextInputLayout>
