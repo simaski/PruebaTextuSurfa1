@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -349,4 +350,19 @@ public class Siguiente extends Activity implements View.OnClickListener {
             Siguiente.this.finish();
         }
     }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
+
+            Intent i = new Intent(Siguiente.this,MainActivity.class);
+            i.putExtras(bb);
+            startActivity(i);
+            Siguiente.this.finish();
+
+        }
+        return true;
+    }
+
+
+
 }

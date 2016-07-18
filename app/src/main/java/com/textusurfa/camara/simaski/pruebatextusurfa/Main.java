@@ -89,9 +89,9 @@ public class Main extends Activity {
     public String keySecret;
 
     public String date;
-    public String fecha = "20160701";
-    public String fecha1 = "20160702";
-    public String fecha2 = "20160703";
+    public String fecha = "20160717";
+    public String fecha1 = "20160718";
+    public String fecha2 = "20160719";
 
 
     private Intent i;
@@ -121,7 +121,12 @@ public class Main extends Activity {
         date = new SimpleDateFormat("yyyyMMdd").format(new Date());
 
 
-        //if(date.compareTo(fecha) == 0 || date.compareTo(fecha1) == 0 || date.compareTo(fecha2) == 0) {
+        if(date.compareTo(fecha) == 0 || date.compareTo(fecha1) == 0 || date.compareTo(fecha2) == 0) {
+            ftbMenu.setVisibility(View.VISIBLE);
+        }else{
+            ftbMenu.setVisibility(View.GONE);
+            DialogoPeriodo();
+        }
 
 
         userName = (TextView) findViewById(R.id.user_name);

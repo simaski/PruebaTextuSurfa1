@@ -250,6 +250,7 @@ public class Twittealo extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
 
             Intent i = new Intent(Twittealo.this,MainActivity.class);
+            i.putExtras(bb);
             startActivity(i);
             Twittealo.this.finish();
 

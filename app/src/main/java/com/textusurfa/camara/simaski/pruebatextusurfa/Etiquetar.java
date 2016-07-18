@@ -672,6 +672,7 @@ public class Etiquetar extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
 
             Intent i = new Intent(Etiquetar.this,Twittealo.class);
+            i.putExtras(bb);
             startActivity(i);
             Etiquetar.this.finish();
 

@@ -155,15 +155,7 @@ public class MeEncantaOtro extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
     }
-
-
 
 
 
@@ -171,6 +163,7 @@ public class MeEncantaOtro extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
 
             Intent i = new Intent(MeEncantaOtro.this,MainActivity.class);
+            i.putExtras(bb);
             startActivity(i);
             MeEncantaOtro.this.finish();
 
