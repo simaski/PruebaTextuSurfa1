@@ -138,14 +138,14 @@ public class MeEncantaOtro extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
                     ostream.flush();
                     ostream.close();
-                    Toast.makeText(getApplicationContext(), "image saved", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "image saved", Toast.LENGTH_SHORT).show();
                     Intent miIntent = new Intent(MeEncantaOtro.this,Siguiente.class);
                     miIntent.putExtras(bb);
                     MeEncantaOtro.this.startActivity(miIntent);
                     MeEncantaOtro.this.finish();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Error! Salvando Imagen.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), "Error! Salvando Imagen.", Toast.LENGTH_SHORT).show();
                 }
 
 

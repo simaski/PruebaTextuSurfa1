@@ -12,13 +12,13 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import com.textusurfa.camara.simaski.pruebatextusurfa.R;
 
-public class DrawingView extends View {
+/**
+ * Created by simaski on 25/06/16.
+ */
+public class DrawingViewOtro extends View {
 
     //drawing path
     private Path drawPath;
@@ -35,23 +35,27 @@ public class DrawingView extends View {
     //erase flag
     private boolean erase=false;
 
-    private ArrayList<Path> paths = new ArrayList<Path>();
-    private ArrayList<Path> undonePaths = new ArrayList<Path>();
 
-
-
-    public DrawingView(Context context, AttributeSet attrs){
-        super(context, attrs);
+    public DrawingViewOtro(Context context) {
+        super(context);
         setupDrawing();
     }
 
-    private Map<Path, Integer> colorsMap = new HashMap<Path, Integer>();
+    public DrawingViewOtro(Context context, AttributeSet attrs) {
+        super(context,attrs);
+        setupDrawing();
+    }
+
+    public DrawingViewOtro(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        setupDrawing();
+    }
 
     //setup drawing
     private void setupDrawing(){
 
         //prepare for drawing and setup paint stroke properties
-        brushSize = getResources().getInteger(R.integer.medium_size);
+        brushSize = getResources().getInteger(R.integer.small_size);
         lastBrushSize = brushSize;
         drawPath = new Path();
         drawPaint = new Paint();
@@ -76,44 +80,7 @@ public class DrawingView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
-        //canvas.drawPath(drawPath, drawPaint);
-        for (Path p : paths){
-            drawPaint.setColor(colorsMap.get(p));
-            canvas.drawPath(p, drawPaint);
-        }
-        drawPaint.setColor(paintColor);
         canvas.drawPath(drawPath, drawPaint);
-    }
-
-    private float mX, mY;
-    private static final float TOUCH_TOLERANCE = 4;
-
-    private void touch_start(float x, float y) {
-        undonePaths.clear();
-        drawPath.reset();
-        drawPath.moveTo(x, y);
-        mX = x;
-        mY = y;
-    }
-    private void touch_move(float x, float y) {
-        float dx = Math.abs(x - mX);
-        float dy = Math.abs(y - mY);
-        if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-            drawPath.quadTo(mX, mY, (x + mX)/2, (y + mY)/2);
-            mX = x;
-            mY = y;
-        }
-    }
-    private void touch_up() {
-
-        drawPath.lineTo(mX, mY);
-        // commit the path to our offscreen
-        //drawCanvas.drawPath(drawPath, drawPaint);
-        // kill this so we don't double draw
-        paths.add(drawPath);
-        drawPath = new Path();
-
-
     }
 
     //register user touches as drawing action
@@ -124,23 +91,15 @@ public class DrawingView extends View {
         //respond to down, move and up events
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                //drawPath.moveTo(touchX, touchY);
-                touch_start(touchX, touchY);
-                invalidate();
+                drawPath.moveTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_MOVE:
-                //drawPath.lineTo(touchX, touchY);
-                touch_move(touchX, touchY);
-                invalidate();
+                drawPath.lineTo(touchX, touchY);
                 break;
             case MotionEvent.ACTION_UP:
-                //drawPath.lineTo(touchX, touchY);
-                //drawCanvas.drawPath(drawPath, drawPaint);
-                //drawPath.reset();
-                //paths.add(drawPath);
-                colorsMap.put(drawPath,paintColor);
-                touch_up();
-                invalidate();
+                drawPath.lineTo(touchX, touchY);
+                drawCanvas.drawPath(drawPath, drawPaint);
+                drawPath.reset();
                 break;
             default:
                 return false;
@@ -186,18 +145,4 @@ public class DrawingView extends View {
         drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
         invalidate();
     }
-
-    public void undo () {
-        if (paths.size()>0)
-        {
-            undonePaths.add(paths.remove(paths.size()-1));
-            invalidate();
-        }
-        else
-        {
-            Toast.makeText(getContext(), "noooooooo", Toast.LENGTH_SHORT).show();
-        }
-        //toast the user
-    }
-
 }

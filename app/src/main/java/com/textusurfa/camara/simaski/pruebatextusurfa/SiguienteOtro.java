@@ -4,12 +4,10 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +17,11 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.UUID;
 
 /**
- * Created by simaski on 25/06/16.
+ * Created by simaski on 19/07/16.
  */
-public class Siguiente extends Activity implements View.OnClickListener {
+public class SiguienteOtro extends Activity implements View.OnClickListener {
 
     //custom drawing view
     private DrawingView drawView;
@@ -86,13 +83,13 @@ public class Siguiente extends Activity implements View.OnClickListener {
         bb.putString("keytoken", keyToken);
         bb.putString("keysecret", keySecret);
         bb.putString("photofile", photoFile);*/
-            bb = new Bundle();
-            bb.putString("tiempo", Tiempo);
-            bb.putString("datos", Status);
-            bb.putString("marca", Marca);
-            bb.putString("keytoken", keyToken);
-            bb.putString("keysecret", keySecret);
-            bb.putString("photofile", photoFile);
+        bb = new Bundle();
+        bb.putString("tiempo", Tiempo);
+        bb.putString("datos", Status);
+        bb.putString("marca", Marca);
+        bb.putString("keytoken", keyToken);
+        bb.putString("keysecret", keySecret);
+        bb.putString("photofile", photoFile);
 
 
         //get drawing view
@@ -290,11 +287,9 @@ public class Siguiente extends Activity implements View.OnClickListener {
         if (view.getId() == R.id.erase_btn) {
             //switch to erase - choose size
 
-            //drawView.setErase(true);
-            //drawView.setBrushSize(largeBrush);
-            //drawView.setLastBrushSize(largeBrush);
-
-            drawView.undo();
+            drawView.setErase(true);
+            drawView.setBrushSize(largeBrush);
+            drawView.setLastBrushSize(largeBrush);
         }
 
         if (view.getId() == R.id.btSiguiente) {
@@ -319,7 +314,7 @@ public class Siguiente extends Activity implements View.OnClickListener {
                 //Toast.makeText(getApplicationContext(), "image saved", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
-                //Toast.makeText(getApplicationContext(), "Error! Salvando Imagen.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error! Salvando Imagen.", Toast.LENGTH_SHORT).show();
             }
             //save drawing
            /* drawView.setDrawingCacheEnabled(true);
@@ -339,27 +334,27 @@ public class Siguiente extends Activity implements View.OnClickListener {
             }*/
             drawView.destroyDrawingCache();
 
-            Intent miIntent = new Intent(Siguiente.this, Twittealo.class);
+            Intent miIntent = new Intent(SiguienteOtro.this, Twittealo.class);
             miIntent.putExtras(bb);
-            Siguiente.this.startActivity(miIntent);
-            Siguiente.this.finish();
+            SiguienteOtro.this.startActivity(miIntent);
+            SiguienteOtro.this.finish();
         }
 
         if (view.getId() == R.id.btVolver) {
-            Intent miIntent = new Intent(Siguiente.this, MainActivity.class);
+            Intent miIntent = new Intent(SiguienteOtro.this, MainActivity.class);
             miIntent.putExtras(bb);
-            Siguiente.this.startActivity(miIntent);
-            Siguiente.this.finish();
+            SiguienteOtro.this.startActivity(miIntent);
+            SiguienteOtro.this.finish();
         }
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_HOME) {
 
-            Intent i = new Intent(Siguiente.this,MainActivity.class);
+            Intent i = new Intent(SiguienteOtro.this,MainActivity.class);
             i.putExtras(bb);
             startActivity(i);
-            Siguiente.this.finish();
+            SiguienteOtro.this.finish();
 
         }
         return true;
